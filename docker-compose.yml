@@ -1,0 +1,19 @@
+version: '2'
+services:
+  mysql:
+    restart: always
+    image: mariadb:10.4.13
+    container_name: maria
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD
+      - TZ=Asia/Seoul
+    volumes:
+      - $VOLUME_DIR:/var/lib/mysql
+
+  adminer:
+    restart: always
+    image: adminer
+    ports:
+      - "${ADMINER_PORT}:8080"
